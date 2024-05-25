@@ -21,3 +21,9 @@ ASP.NET Core in .NET 8.0
 
 **Extensions**
 - VS Code extensions such as ESLint, Prettier for code formatting, and C# for .NET development
+
+
+### Learning
+
+- Web Server with Vue.js typically run on localhost:8080
+- ASP.NET core ususally run on localhost:5000 with Kestrel or an adress like localhost:49960 with IISExpress
