@@ -16,8 +16,6 @@ namespace backend.Controllers
 
             // Process data (e.g., save to a database)
             
-//            Console.WriteLine($"Received data: {record.Aktenzeichen}, {record.Anrede}, {record.Vorname}");
-
             return Ok(new { message = "Data received successfully", data = record });
         }
     }

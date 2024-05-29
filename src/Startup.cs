@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace backend
 {
@@ -35,6 +37,11 @@ namespace backend
             });
 
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApplicationLogicAPI", Version = "v1"});
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -50,7 +57,15 @@ namespace backend
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            //TODO activate swagger
+
+            // enable middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwagger();
+
+            // enable middleware to serve swagger-ui, specifying JSON endpoint
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApplicationLogicAPI V1");
+            });
 
             app.UseCors("CorsPolicy");
 
