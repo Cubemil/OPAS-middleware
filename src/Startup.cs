@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +28,7 @@ namespace backend
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // add cors policy
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder => 
@@ -36,12 +38,20 @@ namespace backend
                         .AllowCredentials());
             });
 
+            // include entity framwork services => use SQLite db
+            services.AddDbContext<OffenseDbContext>(options => 
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
+            // add data controller
             services.AddControllers();
 
+            // add swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApplicationLogicAPI", Version = "v1"});
             });
+
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -58,17 +68,13 @@ namespace backend
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            // enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger();
-
-            // enable middleware to serve swagger-ui, specifying JSON endpoint
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApplicationLogicAPI V1");
             });
 
             app.UseCors("CorsPolicy");
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
