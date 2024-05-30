@@ -15,9 +15,10 @@ namespace backend.Controllers
                 return BadRequest("Invalid data.");
             }
 
-            // Process data (e.g., save to a database)
+            // format
+            // save to db
             
-            return Ok(new { message = "Data received successfully", data = record });
+            return Ok(new { message = "Ordungswidrigkeit wurde erfolgreich eingetragen.", data = record });
         }
     }
 }
