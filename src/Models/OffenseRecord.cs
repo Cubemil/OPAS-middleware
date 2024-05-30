@@ -1,10 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace backend.Models
 {
     public class OffenseRecord
     {
-        /*[Key]
-        public int OffenseRecordId { get; set; }*/
-        
+
+        [Key]        
         public string Aktenzeichen { get; set; } = string.Empty;
         public string Anrede { get; set; } = string.Empty;
         public string Vorname { get; set; } = string.Empty;
