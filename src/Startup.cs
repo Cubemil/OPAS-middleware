@@ -15,7 +15,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace backend
+namespace src
 {
     public class Startup
     {
@@ -54,7 +54,7 @@ namespace backend
 
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, OffenseDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -79,6 +79,9 @@ namespace backend
             {
                 endpoints.MapControllers();
             }); 
+
+            // fill db with testdata
+            DatabaseSeeder.Seed(context);
         }
     }
 

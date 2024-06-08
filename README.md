@@ -27,3 +27,26 @@ ASP.NET Core in .NET 8.0
 
 - Web Server with Vue.js typically run on localhost:8080
 - ASP.NET core ususally run on localhost:5000 with Kestrel or an adress like localhost:49960 with IISExpress
+
+# Using Swagger to test API
+1. Start App (_'cd src' -> 'dotnet run'_)
+2. Open web browser and navigate to http://localhost:5000/swagger 
+
+- **Get All Records:** Use _GET /api/Offense endpoint_ to retrieve all records from the database.
+
+- **Post a New Record:** Use _POST /api/Offense endpoint_ to add a new record to the database.
+
+
+# Example of Using Swagger to Add and View Data
+1. Add a New Record:
+
+    - In the Swagger UI, select the POST /api/Offense endpoint.
+    - Click Try it out.
+    - Enter the JSON data for the new record.
+    - Click Execute.
+
+2. View All Records:
+
+    - In the Swagger UI, select the GET /api/Offense endpoint.
+    - Click Try it out.
+    - Click Execute to see all records in the database.

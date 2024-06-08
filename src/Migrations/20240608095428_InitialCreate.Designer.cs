@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace src.Migrations
 {
     [DbContext(typeof(OffenseDbContext))]
-    [Migration("20240530134623_InitialCreate")]
+    [Migration("20240608095428_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace src.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
-            modelBuilder.Entity("backend.Models.OffenseRecord", b =>
+            modelBuilder.Entity("src.Models.OffenseRecord", b =>
                 {
                     b.Property<string>("Aktenzeichen")
                         .HasColumnType("TEXT");
