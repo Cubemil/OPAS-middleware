@@ -24,7 +24,7 @@ namespace src.Controllers
             {
                 return BadRequest("Invalid data.");
             }
-
+                
             // adds newly retrieved record to existing records through context
             _context.OffenseRecords.Add(record);
             _context.SaveChanges();
