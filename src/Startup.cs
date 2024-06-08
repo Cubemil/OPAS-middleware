@@ -81,7 +81,7 @@ namespace src
             }); 
 
             // fill db with testdata
-            DatabaseSeeder.Seed(context);
+            //DatabaseSeeder.Seed(context);
         }
     }
 
