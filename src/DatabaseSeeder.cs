@@ -24,11 +24,11 @@ namespace src
                     Plz = "12345",
                     Wohnort = "TestCity",
                     Str = "TestStreet",
-                    Hausnummer = "123",
+                    HausnummerInt = "123",
+                    HausnummerExtra = "a",
                     Versicherungsnummer = "VN123456",
                     Krankenversicherungsname = "TestInsurance",
                     Vertragsunternehmensnummer = "TU123456",
-                    Beschreibung = "Test description 1"
                 },
                 new OffenseRecord
                 {
@@ -41,11 +41,11 @@ namespace src
                     Plz = "67890",
                     Wohnort = "SampleTown",
                     Str = "SampleStreet",
-                    Hausnummer = "456",
+                    HausnummerInt = "456",
+                    HausnummerExtra = "b",
                     Versicherungsnummer = "VN789012",
                     Krankenversicherungsname = "SampleInsurance",
                     Vertragsunternehmensnummer = "TU789012",
-                    Beschreibung = "Test description 2"
                 }
             };
 
