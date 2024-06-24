@@ -25,6 +25,9 @@ namespace src.Controllers
                 return BadRequest("Invalid data.");
             }
                 
+            // split Hausnummer into digits/extra part
+            record.SplitHausnummer();
+
             // adds newly retrieved record to existing records through context
             _context.OffenseRecords.Add(record);
             _context.SaveChanges();
