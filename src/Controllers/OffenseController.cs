@@ -10,7 +10,7 @@ namespace src.Controllers
     {
         private readonly OffenseDbContext _context;
 
-        // constructor -> adds database context
+        // constructor -> adds database context<
         public OffenseController(OffenseDbContext context)
         {
             _context = context;

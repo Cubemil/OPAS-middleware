@@ -25,9 +25,9 @@ namespace src
                     Hausnummer = "123a",
                     Plz = "12345",
                     Wohnort = "TestCity",
-                    Krankenversicherungsname = "TestInsurance",
+                    Versicherungsunternehmensnummer = "TU123456",
+                    Krankenversicherung = "TestInsurance",
                     Versicherungsnummer = "VN123456",
-                    Vertragsunternehmensnummer = "TU123456",
                 },
                 new OffenseRecord
                 {
@@ -41,9 +41,9 @@ namespace src
                     Hausnummer = "456b",
                     Plz = "67890",
                     Wohnort = "SampleTown",
-                    Krankenversicherungsname = "SampleInsurance",
+                    Versicherungsunternehmensnummer = "TU789012",
+                    Krankenversicherung = "SampleInsurance",
                     Versicherungsnummer = "VN789012",
-                    Vertragsunternehmensnummer = "TU789012",
                 },
                 new OffenseRecord
                 {
@@ -57,9 +57,9 @@ namespace src
                     Hausnummer = "22b(2nd floor)",
                     Plz = "54321",
                     Wohnort = "MainCity",
-                    Krankenversicherungsname = "MainInsurance",
+                    Versicherungsunternehmensnummer = "TU345678",
+                    Krankenversicherung = "MainInsurance",
                     Versicherungsnummer = "VN345678",
-                    Vertragsunternehmensnummer = "TU345678",
                 },
                 new OffenseRecord
                 {
@@ -73,9 +73,9 @@ namespace src
                     Hausnummer = "99b",
                     Plz = "98765",
                     Wohnort = "HighTown",
-                    Krankenversicherungsname = "HighInsurance",
+                    Versicherungsunternehmensnummer = "TU901234",
+                    Krankenversicherung = "HighInsurance",
                     Versicherungsnummer = "VN901234",
-                    Vertragsunternehmensnummer = "TU901234",
                 },
                 new OffenseRecord
                 {
@@ -89,9 +89,9 @@ namespace src
                     Hausnummer = "76",
                     Plz = "65432",
                     Wohnort = "LowCity",
-                    Krankenversicherungsname = "LowInsurance",
+                    Versicherungsunternehmensnummer = "TU567890",
+                    Krankenversicherung = "LowInsurance",
                     Versicherungsnummer = "VN567890",
-                    Vertragsunternehmensnummer = "TU567890",
                 },
                 new OffenseRecord
                 {
@@ -105,9 +105,9 @@ namespace src
                     Hausnummer = "88c",
                     Plz = "11223",
                     Wohnort = "OakTown",
-                    Krankenversicherungsname = "OakInsurance",
+                    Versicherungsunternehmensnummer = "TU234567",
+                    Krankenversicherung = "OakInsurance",
                     Versicherungsnummer = "VN234567",
-                    Vertragsunternehmensnummer = "TU234567",
                 },
                 new OffenseRecord
                 {
@@ -121,9 +121,9 @@ namespace src
                     Hausnummer = "5",
                     Plz = "44556",
                     Wohnort = "ElmCity",
-                    Krankenversicherungsname = "ElmInsurance",
+                    Versicherungsunternehmensnummer = "TU678901",
+                    Krankenversicherung = "ElmInsurance",
                     Versicherungsnummer = "VN678901",
-                    Vertragsunternehmensnummer = "TU678901",
                 },
                 new OffenseRecord
                 {
@@ -137,9 +137,9 @@ namespace src
                     Hausnummer = "45d",
                     Plz = "77889",
                     Wohnort = "PineTown",
-                    Krankenversicherungsname = "PineInsurance",
+                    Versicherungsunternehmensnummer = "TU890123",
+                    Krankenversicherung = "PineInsurance",
                     Versicherungsnummer = "VN890123",
-                    Vertragsunternehmensnummer = "TU890123",
                 },
                 new OffenseRecord
                 {
@@ -153,9 +153,9 @@ namespace src
                     Hausnummer = "12a",
                     Plz = "22334",
                     Wohnort = "MapleCity",
-                    Krankenversicherungsname = "MapleInsurance",
+                    Versicherungsunternehmensnummer = "TU345678",
+                    Krankenversicherung = "MapleInsurance",
                     Versicherungsnummer = "VN345678",
-                    Vertragsunternehmensnummer = "TU345678",
                 },
                 new OffenseRecord
                 {
@@ -169,9 +169,9 @@ namespace src
                     Hausnummer = "77b",
                     Plz = "55667",
                     Wohnort = "CedarTown",
-                    Krankenversicherungsname = "CedarInsurance",
+                    Versicherungsunternehmensnummer = "TU678901",
+                    Krankenversicherung = "CedarInsurance",
                     Versicherungsnummer = "VN678901",
-                    Vertragsunternehmensnummer = "TU678901",
                 },
                 new OffenseRecord
                 {
@@ -185,9 +185,9 @@ namespace src
                     Hausnummer = "33",
                     Plz = "88900",
                     Wohnort = "BirchCity",
-                    Krankenversicherungsname = "BirchInsurance",
+                    Versicherungsunternehmensnummer = "TU012345",
+                    Krankenversicherung = "BirchInsurance",
                     Versicherungsnummer = "VN012345",
-                    Vertragsunternehmensnummer = "TU012345",
                 }
             };
 
