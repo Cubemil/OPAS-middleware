@@ -6,10 +6,10 @@ namespace src.Models
 {
     public class OffenseRecord
     {
-        [Key] // == primary key
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // == auto-increment
-        [JsonIgnore] // == not serialized to JSON
-        public int RecordId { get; set; }
+        [Key] // primary key
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // auto-increment
+        [JsonPropertyName("recordId")] // Use this name for serialization
+        public int RecordId { get; private set; } // Read-only property with public getter
         public string Fallnummer { get; set; } = string.Empty;
 
         // personal data
@@ -21,7 +21,7 @@ namespace src.Models
         public string Str { get; set; } = string.Empty;
         
         /*received from UI, used for splitting*/
-        [NotMapped] // == not stored in database ("transient property")
+        //[NotMapped] == originally not stored in db, now temporarily for JSON deserialization
         public string Hausnummer { get; set; } = string.Empty;
         [JsonIgnore] public int HausnummerInt { get; set; } = 0;
         [JsonIgnore] public string HausnummerExtra { get; set; } = string.Empty;
