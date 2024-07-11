@@ -50,3 +50,7 @@ ASP.NET Core in .NET 8.0
     - In the Swagger UI, select the GET /api/Offense endpoint.
     - Click Try it out.
     - Click Execute to see all records in the database.
+
+# Update Database
+1. Delete files in Data folder
+2. Update Database ('dotnet ef database update')
