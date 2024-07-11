@@ -52,5 +52,11 @@ ASP.NET Core in .NET 8.0
     - Click Execute to see all records in the database.
 
 # Update Database
-1. Delete files in Data folder
-2. Update Database ('dotnet ef database update')
+1. Ensure backend application is terminated
+2. Delete files in Data folder
+3. Update database ('dotnet ef database update')
+4. Seed database with data using Swagger UI:
+
+    - In the Swagger UI, select the POST /api/Seeder/seed endpoint.
+    - Click Try it out.
+    - Click Execute.
