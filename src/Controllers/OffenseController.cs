@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using src.Models;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace src.Controllers
 {
@@ -21,17 +22,17 @@ namespace src.Controllers
         {
             if (record == null)
             {
-                return BadRequest("Invalid data.");
+                return BadRequest(new { message = "Invalid data." });
             }
-                
-            // split Hausnummer into digits/extra part
+
+            // Split Hausnummer into digits/extra part
             record.SplitHausnummer();
 
-            // adds newly retrieved record to existing records through context
+            // Add the new record to the context
             _context.OffenseRecords.Add(record);
             _context.SaveChanges();
 
-            // retrieve the saved record to ensure RecordId is included
+            // Retrieve the saved record to ensure RecordId is included
             var savedRecord = _context.OffenseRecords.FirstOrDefault(r => r.RecordId == record.RecordId);
 
             return Ok(new { message = "Ordungswidrigkeit wurde erfolgreich eingetragen.", data = savedRecord });
@@ -57,6 +58,127 @@ namespace src.Controllers
             }
 
             return Ok(new { message = "Ordungswidrigkeit wurde erfolgreich gefunden.", data = record });
+        }
+
+        // 'PUT /api/Offense/{id}' -> updates a single record in the database by RecordId
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] OffenseRecord updatedRecord)
+        {
+            if (updatedRecord == null)
+            {
+                return BadRequest(new { message = "Invalid data. Record is null." });
+            }
+
+            // Log received data for debugging
+            System.Console.WriteLine($"Received ID: {id}");
+            System.Console.WriteLine($"Updated Record ID: {updatedRecord.RecordId}");
+
+            if (id != updatedRecord.RecordId)
+            {
+                return BadRequest(new { message = "Invalid data. ID mismatch." });
+            }
+
+            var existingRecord = _context.OffenseRecords.FirstOrDefault(r => r.RecordId == id);
+            if (existingRecord == null)
+            {
+                return NotFound(new { message = "Ordungswidrigkeit nicht gefunden." });
+            }
+
+            // Server-side validation
+            var validationResults = ValidateRecord(updatedRecord);
+            if (validationResults.Any())
+            {
+                return BadRequest(new { message = "Validation failed.", errors = validationResults });
+            }
+
+            // Update the existing record with the new values
+            existingRecord.UpdateRecord(updatedRecord);
+
+            // Save the changes to the database
+            _context.SaveChanges();
+
+            return Ok(new { message = "Ordungswidrigkeit wurde erfolgreich aktualisiert.", data = existingRecord });
+        }
+
+        private List<string> ValidateRecord(OffenseRecord record)
+        {
+            var errors = new List<string>();
+
+            // Perform your validation logic here
+            if (string.IsNullOrEmpty(record.Fallnummer))
+            {
+                errors.Add("Fallnummer is required.");
+            }
+            if (string.IsNullOrEmpty(record.Geschlecht))
+            {
+                errors.Add("Geschlecht is required.");
+            }
+            if (string.IsNullOrEmpty(record.Vorname))
+            {
+                errors.Add("Vorname is required.");
+            }
+            if (string.IsNullOrEmpty(record.Nachname))
+            {
+                errors.Add("Nachname is required.");
+            }
+            if (record.Geburtsdatum == DateTime.MinValue)
+            {
+                errors.Add("Geburtsdatum is required.");
+            }
+            if (string.IsNullOrEmpty(record.Str))
+            {
+                errors.Add("Str is required.");
+            }
+            if (string.IsNullOrEmpty(record.Hausnummer))
+            {
+                errors.Add("Hausnummer is required.");
+            }
+            if (string.IsNullOrEmpty(record.Plz))
+            {
+                errors.Add("Plz is required.");
+            }
+            if (string.IsNullOrEmpty(record.Wohnort))
+            {
+                errors.Add("Wohnort is required.");
+            }
+            if (string.IsNullOrEmpty(record.Geburtsort))
+            {
+                errors.Add("Geburtsort is required.");
+            }
+            if (string.IsNullOrEmpty(record.Versicherungsunternehmensnummer))
+            {
+                errors.Add("Versicherungsunternehmensnummer is required.");
+            }
+            if (string.IsNullOrEmpty(record.Krankenversicherung))
+            {
+                errors.Add("Krankenversicherung is required.");
+            }
+            if (string.IsNullOrEmpty(record.Versicherungsnummer))
+            {
+                errors.Add("Versicherungsnummer is required.");
+            }
+            if (record.Aufforderungsdatum == DateTime.MinValue)
+            {
+                errors.Add("Aufforderungsdatum is required.");
+            }
+            if (record.Startdatum == DateTime.MinValue)
+            {
+                errors.Add("Startdatum is required.");
+            }
+            if (record.Verzugsende == DateTime.MinValue)
+            {
+                errors.Add("Verzugsende is required.");
+            }
+            if (record.Beitragsrueckstand < 0)
+            {
+                errors.Add("Beitragsrueckstand must be a non-negative integer.");
+            }
+            if (record.Gesamtsollbetrag < 0)
+            {
+                errors.Add("Gesamtsollbetrag must be a non-negative integer.");
+            }
+
+            return errors;
         }
     }
 }
