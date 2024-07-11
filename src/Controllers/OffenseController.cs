@@ -35,6 +35,12 @@ namespace src.Controllers
             // Retrieve the saved record to ensure RecordId is included
             var savedRecord = _context.OffenseRecords.FirstOrDefault(r => r.RecordId == record.RecordId);
 
+            // Ensure that no empty record is created
+            if (savedRecord == null)
+            {
+                return StatusCode(500, new { message = "Error saving the record." });
+            }
+
             return Ok(new { message = "Ordungswidrigkeit wurde erfolgreich eingetragen.", data = savedRecord });
         }
 
