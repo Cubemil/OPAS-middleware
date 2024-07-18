@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using src.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace src
@@ -51,34 +52,26 @@ namespace src
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApplicationLogicAPI", Version = "v1"});
             });
 
+            services.AddAutoMapper(typeof(ApplicationMappingProfile));
 
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, OffenseDbContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-            }
+            else app.UseHsts();
 
             app.UseHttpsRedirection();
             app.UseRouting();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApplicationLogicAPI V1");
-            });
+            app.UseSwaggerUI(c => 
+                { c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApplicationLogicAPI V1"); });
 
             app.UseCors("CorsPolicy");
             app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            }); 
+                { endpoints.MapControllers(); });   
 
             // fill db with testdata
             //DatabaseSeeder.Seed(context);

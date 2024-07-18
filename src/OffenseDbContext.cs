@@ -1,27 +1,32 @@
 using Microsoft.EntityFrameworkCore;
 using src.Models;
 
-public class OffenseDbContext : DbContext
+namespace src
 {
-    public DbSet<OffenseRecord> OffenseRecords { get; set; }
-
-    public OffenseDbContext(DbContextOptions<OffenseDbContext> options) : base(options) {}
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public class OffenseDbContext : DbContext
     {
-        // automatically adds RecordId to record when added to db
-        modelBuilder.Entity<OffenseRecord>()
-            .Property(e => e.RecordId)
-            .ValueGeneratedOnAdd();
+        public DbSet<DtoOffenseRecord> OffenseRecords { get; set; }
 
-        base.OnModelCreating(modelBuilder);
-    }
+        public OffenseDbContext(DbContextOptions<OffenseDbContext> options) : base(options) { }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source = ./Data/offenses.db");
+            // automatically adds RecordId to record when added to db
+            modelBuilder.Entity<DtoOffenseRecord>()
+                .Property(e => e.RecordId)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<DtoOffenseRecord>()
+                .Property(e => e.RowVersion)
+                .IsConcurrencyToken(false);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseSqlite("Data Source = ./Data/offenses.db");
         }
     }
 }

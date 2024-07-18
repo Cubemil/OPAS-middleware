@@ -7,7 +7,7 @@ namespace src.Controllers
     [ApiController]
     public class SeederController : ControllerBase
     {
-        private readonly OffenseDbContext _context;
+        private OffenseDbContext _context;
 
         public SeederController(OffenseDbContext context)
         {

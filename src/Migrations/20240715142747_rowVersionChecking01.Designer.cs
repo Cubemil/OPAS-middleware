@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace src.Migrations
 {
     [DbContext(typeof(OffenseDbContext))]
-    [Migration("20240711152843_fixingErrorsWithPutRequest12")]
-    partial class fixingErrorsWithPutRequest12
+    [Migration("20240715142747_rowVersionChecking01")]
+    partial class rowVersionChecking01
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,6 +80,13 @@ namespace src.Migrations
                     b.Property<string>("Plz")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("BLOB")
+                        .HasAnnotation("Relational:JsonPropertyName", "rowVersion");
 
                     b.Property<DateTime>("Startdatum")
                         .HasColumnType("TEXT");

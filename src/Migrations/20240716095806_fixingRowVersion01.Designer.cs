@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace src.Migrations
 {
     [DbContext(typeof(OffenseDbContext))]
-    [Migration("20240711152843_fixingErrorsWithPutRequest12")]
-    partial class fixingErrorsWithPutRequest12
+    [Migration("20240716095806_fixingRowVersion01")]
+    partial class fixingRowVersion01
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,8 +23,7 @@ namespace src.Migrations
                 {
                     b.Property<int>("RecordId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasAnnotation("Relational:JsonPropertyName", "recordId");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Aufforderungsdatum")
                         .HasColumnType("TEXT");
@@ -80,6 +79,13 @@ namespace src.Migrations
                     b.Property<string>("Plz")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("BLOB")
+                        .HasAnnotation("Relational:JsonPropertyName", "rowVersion");
 
                     b.Property<DateTime>("Startdatum")
                         .HasColumnType("TEXT");

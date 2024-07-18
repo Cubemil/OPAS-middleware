@@ -1,6 +1,6 @@
 using System;
+using System.Linq;
 using src.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace src
 {
@@ -8,13 +8,12 @@ namespace src
     {
         public static void Seed(OffenseDbContext context)
         {
-            context.Database.EnsureDeleted(); // Deletes the existing database
-            context.Database.EnsureCreated(); // Recreates the database
+            context.Database.EnsureDeleted(); // deletes existing database
+            context.Database.EnsureCreated(); // recreates database
 
-            var records = new OffenseRecord[]
+            var records = new JsonOffenseRecord[]
             {
-                new OffenseRecord
-                {
+                new () {
                     Fallnummer = "A123",
                     Geschlecht = "Herr",
                     Titel = "Dr.",
@@ -38,8 +37,7 @@ namespace src
                     Gesamtsollbetrag = 1000,
                     Bemerkungen = "First offense record."
                 },
-                new OffenseRecord
-                {
+                new () {
                     Fallnummer = "B456",
                     Geschlecht = "Frau",
                     Titel = "Prof.",
@@ -63,7 +61,7 @@ namespace src
                     Gesamtsollbetrag = 1200,
                     Bemerkungen = "Second offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "C789",
                     Geschlecht = "Herr",
@@ -88,7 +86,7 @@ namespace src
                     Gesamtsollbetrag = 1400,
                     Bemerkungen = "Third offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "D012",
                     Geschlecht = "Frau",
@@ -113,7 +111,7 @@ namespace src
                     Gesamtsollbetrag = 1600,
                     Bemerkungen = "Fourth offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "E345",
                     Geschlecht = "Herr",
@@ -138,7 +136,7 @@ namespace src
                     Gesamtsollbetrag = 1800,
                     Bemerkungen = "Fifth offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "F678",
                     Geschlecht = "Frau",
@@ -163,7 +161,7 @@ namespace src
                     Gesamtsollbetrag = 2000,
                     Bemerkungen = "Sixth offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "G901",
                     Geschlecht = "Herr",
@@ -188,7 +186,7 @@ namespace src
                     Gesamtsollbetrag = 2200,
                     Bemerkungen = "Seventh offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "H234",
                     Geschlecht = "Frau",
@@ -213,7 +211,7 @@ namespace src
                     Gesamtsollbetrag = 2400,
                     Bemerkungen = "Eighth offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "I567",
                     Geschlecht = "Herr",
@@ -238,7 +236,7 @@ namespace src
                     Gesamtsollbetrag = 2600,
                     Bemerkungen = "Ninth offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "J890",
                     Geschlecht = "Frau",
@@ -263,7 +261,7 @@ namespace src
                     Gesamtsollbetrag = 2800,
                     Bemerkungen = "Tenth offense record."
                 },
-                new OffenseRecord
+                new ()
                 {
                     Fallnummer = "K123",
                     Geschlecht = "Herr",
@@ -291,13 +289,18 @@ namespace src
             };
 
             // split Hausnummer into digits/extra part
-            foreach (var record in records)
+            var dtoRecords = records.Select(record =>
             {
-                record.SplitHausnummer();
-            }
+                var dto = new DtoOffenseRecord();
+                dto.UpdateRecord(record);
+                dto.SplitHausnummer();
+                return dto;
+            }).ToArray();
 
-            context.OffenseRecords.AddRange(records);
+            // add records to database
+            context.OffenseRecords.AddRange(dtoRecords);
             context.SaveChanges();
+
         }
     }
 }

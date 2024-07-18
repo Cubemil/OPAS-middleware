@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using src;
 
 #nullable disable
 
@@ -16,12 +17,11 @@ namespace src.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
-            modelBuilder.Entity("src.Models.OffenseRecord", b =>
+            modelBuilder.Entity("src.Models.DtoOffenseRecord", b =>
                 {
                     b.Property<int>("RecordId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasAnnotation("Relational:JsonPropertyName", "recordId");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Aufforderungsdatum")
                         .HasColumnType("TEXT");
@@ -77,6 +77,9 @@ namespace src.Migrations
                     b.Property<string>("Plz")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("RowVersion")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Startdatum")
                         .HasColumnType("TEXT");

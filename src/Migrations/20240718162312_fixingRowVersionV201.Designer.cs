@@ -4,14 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using src;
 
 #nullable disable
 
 namespace src.Migrations
 {
     [DbContext(typeof(OffenseDbContext))]
-    [Migration("20240711152843_fixingErrorsWithPutRequest12")]
-    partial class fixingErrorsWithPutRequest12
+    [Migration("20240718162312_fixingRowVersionV201")]
+    partial class fixingRowVersionV201
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,12 +20,11 @@ namespace src.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
-            modelBuilder.Entity("src.Models.JSONOffenseRecord", b =>
+            modelBuilder.Entity("src.Models.DtoOffenseRecord", b =>
                 {
                     b.Property<int>("RecordId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasAnnotation("Relational:JsonPropertyName", "recordId");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Aufforderungsdatum")
                         .HasColumnType("TEXT");
@@ -80,6 +80,9 @@ namespace src.Migrations
                     b.Property<string>("Plz")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("RowVersion")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Startdatum")
                         .HasColumnType("TEXT");
