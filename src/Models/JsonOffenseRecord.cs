@@ -98,6 +98,11 @@ namespace src.Models
 
         /**************** helper functions ****************/
 
+        /// <summary>
+        /// Validates a JsonOffenseRecord object and returns a list of validation errors.
+        /// </summary>
+        /// <param name="record">The JsonOffenseRecord object to validate.</param>
+        /// <returns>A list of validation errors. An empty list indicates that the record is valid.</returns>
         internal static List<string> ValidateRecord(JsonOffenseRecord record)
         {
             var errors = new List<string>();

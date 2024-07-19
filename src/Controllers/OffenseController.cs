@@ -18,7 +18,21 @@ namespace src.Controllers
             _mapper = mapper;
         }
 
-        // 'POST /api/Offense' -> add new record to database
+        /// <summary>
+        /// Call: 'POST /api/Offense'
+        /// -> Posts a new record to the database.
+        /// </summary>
+        /// <param name="record">The record to be added to the database.</param>
+        /// <returns> 
+        /// <see cref="IActionResult"/> interface defines a contract that represents the result of an action method.
+        /// This interface is implemented by <see cref="BadRequestObjectResult"/> and <see cref="OkObjectResult"/>.
+        /// and is used to return an HTTP status code and a value (string, object, etc.).
+        /// The value is serialized into the response body.
+        /// In this case, the method returns a BadRequestObjectResult if the record is null or if the server side validation fails.
+        /// Otherwise, the method maps the JsonOffenseRecord to a DtoOffenseRecord, splits the Hausnummer into digits/extra part,
+        /// adds the new record to the database context, saves the changes, retrieves the saved record from the database, and returns it.
+        /// If the saved record is null, the method returns a StatusCode 500 with an error message.
+        /// </returns>
         [HttpPost]
         public IActionResult Post([FromBody] JsonOffenseRecord record)
         {
@@ -50,7 +64,14 @@ namespace src.Controllers
             return Ok(new { message = "Ordungswidrigkeit wurde erfolgreich eingetragen.", data = savedRecord });
         }
 
-        // 'GET /api/Offense' -> retrieves all records from the database
+        /// <summary>
+        /// Call: 'GET /api/Offense' 
+        /// -> Retrieves all records from the database
+        /// </summary>
+        /// <returns>
+        /// <see cref="IActionResult"/> Representing every record in database
+        /// The method returns a list of all records in the database, their RecordIds, and a message indicating success.
+        /// </returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -59,7 +80,14 @@ namespace src.Controllers
             return Ok(new { message = "Offenses successfully retrieved.", data = records, ids });
         }
 
-        // 'GET /api/Offense/{id}' -> retrieves a single record from the database by RecordId
+        /// <summary>
+        /// Call: 'GET /api/Offense/{id}'
+        /// -> Retrieves a single record from the database by RecordId
+        /// </summary>
+        /// <param name="id"> The RecordId of the record to be retrieved. </param>
+        /// <returns>
+        /// The method returns a single record from the database by RecordId, represented as <see cref="IActionResult"/> , if it exists.
+        /// </returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -70,7 +98,22 @@ namespace src.Controllers
             return Ok(new { message = "Offense found.", data = record });
         }
 
-        // 'PUT /api/Offense/{id}' -> updates a single record in the database by RecordId
+        /// <summary>
+        /// Call: 'PUT /api/Offense/{id}'
+        /// -> Updates a single record in the database by RecordId
+        /// </summary>
+        /// <remarks>
+        /// The method updates a single record in the database by RecordId.
+        /// </remarks>
+        /// <param name="id"> The RecordId of the record to be updated. </param>
+        /// <param name="updatedRecord"> The updated record to be saved to the database. </param>
+        /// <returns>
+        /// If record does not exist -> returns NotFoundObjectResult.
+        /// If RowVersion of existing record does not match RowVersion of updated record -> returns ConflictObjectResult.
+        /// Otherwise, updates existing record with values from updated record, increments RowVersion, saves changes and returns updated record.
+        /// If the changes cannot be saved -> returns ConflictObjectResult.
+        /// </returns>
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] JsonOffenseRecord updatedRecord)
         {
@@ -89,7 +132,7 @@ namespace src.Controllers
             if (existingRecord.RowVersion != updatedRecord.RowVersion)
                 return Conflict(new { message = "The offense has been modified by another user." });
 
-            // update existing record with new values
+            // update existing record with new values (+ increment RowVersion)
             existingRecord.UpdateRecord(updatedRecord);
 
             // Save changes to db

@@ -18,9 +18,11 @@ namespace src.Models
         [JsonIgnore]
         public string HausnummerExtra { get; set; } = string.Empty;
         
-        /**************** helper functions ****************/
+        /******************************** helper functions ******************************/
 
-        // split Hausnummer => extracted as a method to be called in Controller AND seeder
+        /// <summary>
+        /// Splits the Hausnummer into its integer part and extra part.
+        /// </summary>
         public void SplitHausnummer()
         {
             if (!string.IsNullOrEmpty(Hausnummer))
@@ -38,6 +40,10 @@ namespace src.Models
             }
         }
         
+        /// <summary>
+        /// Updates the offense record with the values from the provided <see cref="JsonOffenseRecord"/>.
+        /// </summary>
+        /// <param name="newRecord">The new offense record containing the updated values.</param>
         public void UpdateRecord(JsonOffenseRecord newRecord)
         {
             Fallnummer = newRecord.Fallnummer;

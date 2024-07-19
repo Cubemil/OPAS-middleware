@@ -4,6 +4,9 @@ namespace src.Models
 {
     public class ApplicationMappingProfile : Profile
     {
+        /// <summary>
+        /// Represents the mapping profile for application models.
+        /// </summary>
         public ApplicationMappingProfile()
         {
             CreateMap<JsonOffenseRecord, DtoOffenseRecord>()
