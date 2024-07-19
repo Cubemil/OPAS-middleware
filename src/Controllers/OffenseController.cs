@@ -7,16 +7,10 @@ namespace src.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OffenseController : ControllerBase
+    public class OffenseController(OffenseDbContext context, IMapper mapper) : ControllerBase
     {
-        private readonly OffenseDbContext _context;
-        private readonly IMapper _mapper;
-        
-        public OffenseController(OffenseDbContext context, IMapper mapper)
-        {
-            _context = context;
-            _mapper = mapper;
-        }
+        private readonly OffenseDbContext _context = context;
+        private readonly IMapper _mapper = mapper;
 
         /// <summary>
         /// Call: 'POST /api/Offense'
