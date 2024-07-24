@@ -36,6 +36,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 4, 1),
                     Beitragsrueckstand = 500,
                     Sollbeitrag = 1000,
+                    Folgemeldung = 1,
                     Bemerkungen = "First offense record."
                 },
                 new () {
@@ -61,6 +62,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 5, 1),
                     Beitragsrueckstand = 600,
                     Sollbeitrag = 1200,
+                    Folgemeldung = 1,
                     Bemerkungen = "Second offense record."
                 },
                 new ()
@@ -87,6 +89,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 6, 1),
                     Beitragsrueckstand = 700,
                     Sollbeitrag = 1400,
+                    Folgemeldung = 1,
                     Bemerkungen = "Third offense record."
                 },
                 new ()
@@ -113,6 +116,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 7, 1),
                     Beitragsrueckstand = 800,
                     Sollbeitrag = 1600,
+                    Folgemeldung = 1,
                     Bemerkungen = "Fourth offense record."
                 },
                 new ()
@@ -139,6 +143,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 8, 1),
                     Beitragsrueckstand = 900,
                     Sollbeitrag = 1800,
+                    Folgemeldung = 1,
                     Bemerkungen = "Fifth offense record."
                 },
                 new ()
@@ -165,6 +170,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 9, 1),
                     Beitragsrueckstand = 1000,
                     Sollbeitrag = 2000,
+                    Folgemeldung = 1,
                     Bemerkungen = "Sixth offense record."
                 },
                 new ()
@@ -191,6 +197,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 10, 1),
                     Beitragsrueckstand = 1100,
                     Sollbeitrag = 2200,
+                    Folgemeldung = 1,
                     Bemerkungen = "Seventh offense record."
                 },
                 new ()
@@ -217,6 +224,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 11, 1),
                     Beitragsrueckstand = 1200,
                     Sollbeitrag = 2400,
+                    Folgemeldung = 1,
                     Bemerkungen = "Eighth offense record."
                 },
                 new ()
@@ -243,6 +251,7 @@ namespace src
                     Verzugsende = new DateTime(2023, 12, 1),
                     Beitragsrueckstand = 1300,
                     Sollbeitrag = 2600,
+                    Folgemeldung = 1,
                     Bemerkungen = "Ninth offense record."
                 },
                 new ()
@@ -269,6 +278,7 @@ namespace src
                     Verzugsende = new DateTime(2024, 1, 1),
                     Beitragsrueckstand = 1400,
                     Sollbeitrag = 2800,
+                    Folgemeldung = 1,
                     Bemerkungen = "Tenth offense record."
                 },
                 new ()
@@ -295,6 +305,7 @@ namespace src
                     Verzugsende = new DateTime(2024, 2, 1),
                     Beitragsrueckstand = 1500,
                     Sollbeitrag = 3000,
+                    Folgemeldung = 1,
                     Bemerkungen = "Eleventh offense record."
                 }
             };

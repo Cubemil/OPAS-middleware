@@ -69,6 +69,7 @@ namespace src.Models
             Verzugsende = newRecord.Verzugsende;
             Beitragsrueckstand = newRecord.Beitragsrueckstand;
             Sollbeitrag = newRecord.Sollbeitrag;
+            Folgemeldung = newRecord.Folgemeldung;
             Bemerkungen = newRecord.Bemerkungen;
 
             // increment RowVersion

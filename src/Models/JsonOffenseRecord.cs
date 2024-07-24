@@ -94,7 +94,11 @@ namespace src.Models
         [JsonRequired]
         [JsonPropertyName("sollbeitrag")]
         public new int Sollbeitrag { get; set; }
-
+        
+        [JsonRequired]
+        [JsonPropertyName("folgemeldung")]
+        public new int Folgemeldung { get; set; }
+        
         // additional information
         [JsonPropertyName("bemerkungen")]
         public new string Bemerkungen { get; set; } = string.Empty; 
