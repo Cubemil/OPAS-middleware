@@ -34,7 +34,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 3, 1),
                     Verzugsende = new DateTime(2023, 4, 1),
                     Beitragsrueckstand = 500,
-                    Gesamtsollbetrag = 1000,
+                    Sollbeitrag = 1000,
                     Bemerkungen = "First offense record."
                 },
                 new () {
@@ -58,7 +58,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 4, 1),
                     Verzugsende = new DateTime(2023, 5, 1),
                     Beitragsrueckstand = 600,
-                    Gesamtsollbetrag = 1200,
+                    Sollbeitrag = 1200,
                     Bemerkungen = "Second offense record."
                 },
                 new ()
@@ -83,7 +83,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 5, 1),
                     Verzugsende = new DateTime(2023, 6, 1),
                     Beitragsrueckstand = 700,
-                    Gesamtsollbetrag = 1400,
+                    Sollbeitrag = 1400,
                     Bemerkungen = "Third offense record."
                 },
                 new ()
@@ -108,7 +108,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 6, 1),
                     Verzugsende = new DateTime(2023, 7, 1),
                     Beitragsrueckstand = 800,
-                    Gesamtsollbetrag = 1600,
+                    Sollbeitrag = 1600,
                     Bemerkungen = "Fourth offense record."
                 },
                 new ()
@@ -133,7 +133,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 7, 1),
                     Verzugsende = new DateTime(2023, 8, 1),
                     Beitragsrueckstand = 900,
-                    Gesamtsollbetrag = 1800,
+                    Sollbeitrag = 1800,
                     Bemerkungen = "Fifth offense record."
                 },
                 new ()
@@ -158,7 +158,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 8, 1),
                     Verzugsende = new DateTime(2023, 9, 1),
                     Beitragsrueckstand = 1000,
-                    Gesamtsollbetrag = 2000,
+                    Sollbeitrag = 2000,
                     Bemerkungen = "Sixth offense record."
                 },
                 new ()
@@ -183,7 +183,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 9, 1),
                     Verzugsende = new DateTime(2023, 10, 1),
                     Beitragsrueckstand = 1100,
-                    Gesamtsollbetrag = 2200,
+                    Sollbeitrag = 2200,
                     Bemerkungen = "Seventh offense record."
                 },
                 new ()
@@ -208,7 +208,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 10, 1),
                     Verzugsende = new DateTime(2023, 11, 1),
                     Beitragsrueckstand = 1200,
-                    Gesamtsollbetrag = 2400,
+                    Sollbeitrag = 2400,
                     Bemerkungen = "Eighth offense record."
                 },
                 new ()
@@ -233,7 +233,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 11, 1),
                     Verzugsende = new DateTime(2023, 12, 1),
                     Beitragsrueckstand = 1300,
-                    Gesamtsollbetrag = 2600,
+                    Sollbeitrag = 2600,
                     Bemerkungen = "Ninth offense record."
                 },
                 new ()
@@ -258,7 +258,7 @@ namespace src
                     VerzugBis = new DateTime(2023, 12, 1),
                     Verzugsende = new DateTime(2024, 1, 1),
                     Beitragsrueckstand = 1400,
-                    Gesamtsollbetrag = 2800,
+                    Sollbeitrag = 2800,
                     Bemerkungen = "Tenth offense record."
                 },
                 new ()
@@ -283,7 +283,7 @@ namespace src
                     VerzugBis = new DateTime(2024, 1, 1),
                     Verzugsende = new DateTime(2024, 2, 1),
                     Beitragsrueckstand = 1500,
-                    Gesamtsollbetrag = 3000,
+                    Sollbeitrag = 3000,
                     Bemerkungen = "Eleventh offense record."
                 }
             };

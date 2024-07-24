@@ -89,8 +89,8 @@ namespace src.Models
         public new int Beitragsrueckstand { get; set; }
 
         [JsonRequired]
-        [JsonPropertyName("gesamtsollbetrag")]
-        public new int Gesamtsollbetrag { get; set; }
+        [JsonPropertyName("sollbeitrag")]
+        public new int Sollbeitrag { get; set; }
 
         // additional information
         [JsonPropertyName("bemerkungen")]
@@ -141,8 +141,8 @@ namespace src.Models
                 errors.Add("Verzugsende is required.");
             if (record.Beitragsrueckstand < 0)                                  
                 errors.Add("Beitragsrueckstand must be a non-negative integer.");
-            if (record.Gesamtsollbetrag < 0)                                    
-                errors.Add("Gesamtsollbetrag must be a non-negative integer.");
+            if (record.Sollbeitrag < 0)                                    
+                errors.Add("Sollbeitrag must be a non-negative integer.");
 
             return errors;
         }

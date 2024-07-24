@@ -31,7 +31,7 @@ namespace src.Models
         public DateTime VerzugBis { get; set; } = DateTime.MinValue;
         public DateTime Verzugsende { get; set; } = DateTime.MinValue;
         public int Beitragsrueckstand { get; set; } = 0;
-        public int Gesamtsollbetrag { get; set; } = 0;
+        public int Sollbeitrag { get; set; } = 0;
 
         // additional information
         public string Bemerkungen { get; set; } = string.Empty;
