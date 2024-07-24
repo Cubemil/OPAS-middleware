@@ -51,6 +51,7 @@ namespace src.Models
             Titel = newRecord.Titel;
             Vorname = newRecord.Vorname;
             Nachname = newRecord.Nachname;
+            Geburtsname = newRecord.Geburtsname;
             Geburtsdatum = newRecord.Geburtsdatum;
             Str = newRecord.Str;
             Hausnummer = newRecord.Hausnummer;

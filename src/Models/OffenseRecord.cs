@@ -12,6 +12,7 @@ namespace src.Models
         public string Titel { get; set; } = string.Empty;
         public string Vorname { get; set; } = string.Empty;
         public string Nachname { get; set; } = string.Empty;
+        public string Geburtsname { get; set; } = string.Empty;
         public DateTime Geburtsdatum { get; set; } = DateTime.MinValue;
         public string Str { get; set; } = string.Empty;
         public string Hausnummer { get; set; } = string.Empty;

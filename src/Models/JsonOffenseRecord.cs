@@ -28,6 +28,9 @@ namespace src.Models
         [JsonPropertyName("nachname")]
         public new string Nachname { get; set; } = string.Empty;
 
+        [JsonPropertyName("geburtsname")]
+        public new string Geburtsname { get; set; } = string.Empty;
+        
         [JsonRequired]
         [JsonPropertyName("geburtsdatum")]
         public new DateTime Geburtsdatum { get; set; }
