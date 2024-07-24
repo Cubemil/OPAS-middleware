@@ -73,8 +73,8 @@ namespace src.Models
         public new DateTime Aufforderungsdatum { get; set; }
 
         [JsonRequired]
-        [JsonPropertyName("startdatum")]
-        public new DateTime Startdatum { get; set; }
+        [JsonPropertyName("beginnRueckstand")]
+        public new DateTime BeginnRueckstand { get; set; }
 
         [JsonRequired]
         [JsonPropertyName("verzugBis")]
@@ -135,8 +135,8 @@ namespace src.Models
                 errors.Add("Versicherungsnummer is required.");
             if (record.Aufforderungsdatum == DateTime.MinValue)                 
                 errors.Add("Aufforderungsdatum is required.");
-            if (record.Startdatum == DateTime.MinValue)                         
-                errors.Add("Startdatum is required.");
+            if (record.BeginnRueckstand == DateTime.MinValue)                         
+                errors.Add("Beginn Rückstand is required.");
             if (record.Verzugsende == DateTime.MinValue)                        
                 errors.Add("Verzugsende is required.");
             if (record.Beitragsrueckstand < 0)                                  

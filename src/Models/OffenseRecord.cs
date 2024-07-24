@@ -27,7 +27,7 @@ namespace src.Models
 
         // information about offense
         public DateTime Aufforderungsdatum { get; set; } = DateTime.MinValue;
-        public DateTime Startdatum { get; set; } = DateTime.MinValue;
+        public DateTime BeginnRueckstand { get; set; } = DateTime.MinValue;
         public DateTime VerzugBis { get; set; } = DateTime.MinValue;
         public DateTime Verzugsende { get; set; } = DateTime.MinValue;
         public int Beitragsrueckstand { get; set; } = 0;
