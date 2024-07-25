@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emilp\\Uni_C\\OPAS\\application-logic\\src\\src.csproj": {}
+    "/Users/felixgahler/Documents/HS-Anhalt/Anwendungsentwicklung/AL/src/src.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emilp\\Uni_C\\OPAS\\application-logic\\src\\src.csproj": {
+    "/Users/felixgahler/Documents/HS-Anhalt/Anwendungsentwicklung/AL/src/src.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emilp\\Uni_C\\OPAS\\application-logic\\src\\src.csproj",
+        "projectUniqueName": "/Users/felixgahler/Documents/HS-Anhalt/Anwendungsentwicklung/AL/src/src.csproj",
         "projectName": "src",
-        "projectPath": "C:\\Users\\emilp\\Uni_C\\OPAS\\application-logic\\src\\src.csproj",
-        "packagesPath": "C:\\Users\\emilp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emilp\\Uni_C\\OPAS\\application-logic\\src\\obj\\",
+        "projectPath": "/Users/felixgahler/Documents/HS-Anhalt/Anwendungsentwicklung/AL/src/src.csproj",
+        "packagesPath": "/Users/felixgahler/.nuget/packages/",
+        "outputPath": "/Users/felixgahler/Documents/HS-Anhalt/Anwendungsentwicklung/AL/src/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\emilp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/felixgahler/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -91,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

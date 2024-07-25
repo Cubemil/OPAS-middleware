@@ -28,6 +28,9 @@ namespace src.Models
         [JsonPropertyName("nachname")]
         public new string Nachname { get; set; } = string.Empty;
 
+        [JsonPropertyName("geburtsname")]
+        public new string Geburtsname { get; set; } = string.Empty;
+        
         [JsonRequired]
         [JsonPropertyName("geburtsdatum")]
         public new DateTime Geburtsdatum { get; set; }
@@ -73,8 +76,8 @@ namespace src.Models
         public new DateTime Aufforderungsdatum { get; set; }
 
         [JsonRequired]
-        [JsonPropertyName("startdatum")]
-        public new DateTime Startdatum { get; set; }
+        [JsonPropertyName("beginnRueckstand")]
+        public new DateTime BeginnRueckstand { get; set; }
 
         [JsonRequired]
         [JsonPropertyName("verzugBis")]
@@ -89,9 +92,13 @@ namespace src.Models
         public new int Beitragsrueckstand { get; set; }
 
         [JsonRequired]
-        [JsonPropertyName("gesamtsollbetrag")]
-        public new int Gesamtsollbetrag { get; set; }
-
+        [JsonPropertyName("sollbeitrag")]
+        public new int Sollbeitrag { get; set; }
+        
+        [JsonRequired]
+        [JsonPropertyName("folgemeldung")]
+        public new int Folgemeldung { get; set; }
+        
         // additional information
         [JsonPropertyName("bemerkungen")]
         public new string Bemerkungen { get; set; } = string.Empty; 
@@ -135,14 +142,14 @@ namespace src.Models
                 errors.Add("Versicherungsnummer is required.");
             if (record.Aufforderungsdatum == DateTime.MinValue)                 
                 errors.Add("Aufforderungsdatum is required.");
-            if (record.Startdatum == DateTime.MinValue)                         
-                errors.Add("Startdatum is required.");
+            if (record.BeginnRueckstand == DateTime.MinValue)                         
+                errors.Add("Beginn Rückstand is required.");
             if (record.Verzugsende == DateTime.MinValue)                        
                 errors.Add("Verzugsende is required.");
             if (record.Beitragsrueckstand < 0)                                  
                 errors.Add("Beitragsrueckstand must be a non-negative integer.");
-            if (record.Gesamtsollbetrag < 0)                                    
-                errors.Add("Gesamtsollbetrag must be a non-negative integer.");
+            if (record.Sollbeitrag < 0)                                    
+                errors.Add("Sollbeitrag must be a non-negative integer.");
 
             return errors;
         }

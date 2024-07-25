@@ -50,6 +50,7 @@ namespace src.Models
             Titel = newRecord.Titel;
             Vorname = newRecord.Vorname;
             Nachname = newRecord.Nachname;
+            Geburtsname = newRecord.Geburtsname;
             Geburtsdatum = newRecord.Geburtsdatum;
             Str = newRecord.Str;
             Hausnummer = newRecord.Hausnummer;
@@ -62,11 +63,12 @@ namespace src.Models
             Krankenversicherung = newRecord.Krankenversicherung;
             Versicherungsnummer = newRecord.Versicherungsnummer;
             Aufforderungsdatum = newRecord.Aufforderungsdatum;
-            Startdatum = newRecord.Startdatum;
+            BeginnRueckstand = newRecord.BeginnRueckstand;
             VerzugBis = newRecord.VerzugBis;
             Verzugsende = newRecord.Verzugsende;
             Beitragsrueckstand = newRecord.Beitragsrueckstand;
-            Gesamtsollbetrag = newRecord.Gesamtsollbetrag;
+            Sollbeitrag = newRecord.Sollbeitrag;
+            Folgemeldung = newRecord.Folgemeldung;
             Bemerkungen = newRecord.Bemerkungen;
 
             // increment RowVersion

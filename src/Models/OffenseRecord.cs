@@ -12,6 +12,7 @@ namespace src.Models
         public string Titel { get; set; } = string.Empty;
         public string Vorname { get; set; } = string.Empty;
         public string Nachname { get; set; } = string.Empty;
+        public string Geburtsname { get; set; } = string.Empty;
         public DateTime Geburtsdatum { get; set; } = DateTime.MinValue;
         public string Str { get; set; } = string.Empty;
         public string Hausnummer { get; set; } = string.Empty;
@@ -27,12 +28,13 @@ namespace src.Models
 
         // information about offense
         public DateTime Aufforderungsdatum { get; set; } = DateTime.MinValue;
-        public DateTime Startdatum { get; set; } = DateTime.MinValue;
+        public DateTime BeginnRueckstand { get; set; } = DateTime.MinValue;
         public DateTime VerzugBis { get; set; } = DateTime.MinValue;
         public DateTime Verzugsende { get; set; } = DateTime.MinValue;
         public int Beitragsrueckstand { get; set; } = 0;
-        public int Gesamtsollbetrag { get; set; } = 0;
-
+        public int Sollbeitrag { get; set; } = 0;
+        public int Folgemeldung { get; set; } = 0;
+        
         // additional information
         public string Bemerkungen { get; set; } = string.Empty;
     }
