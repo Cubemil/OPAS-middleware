@@ -32,10 +32,9 @@ namespace src.Models
                 var hausnummerExtraPart = new string(Hausnummer.SkipWhile(char.IsDigit).ToArray());
 
                 // assign split values
-                if (int.TryParse(hausnummerIntPart, out int hausnummerInt))
-                {
+                if (int.TryParse(hausnummerIntPart, out int hausnummerInt)) 
                     HausnummerInt = hausnummerInt;
-                }
+                    
                 HausnummerExtra = hausnummerExtraPart;
             }
         }
