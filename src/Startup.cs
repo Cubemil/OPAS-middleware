@@ -33,13 +33,13 @@ namespace src
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder => 
-                    builder.WithOrigins("http://localhost:8080")
+                    builder.WithOrigins("http://webengineering.ins.hs-anhalt.de:11031", "http://localhost:8080")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials());
             });
 
-            // include entity framwork services => use SQLite db
+            // include entity framework services => use SQLite db
             services.AddDbContext<OffenseDbContext>(options => 
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -53,14 +53,14 @@ namespace src
             });
 
             services.AddAutoMapper(typeof(ApplicationMappingProfile));
-
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, OffenseDbContext context)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
-            else app.UseHsts();
+            else
+                app.UseHsts();
 
             app.UseHttpsRedirection();
             app.UseRouting();
@@ -74,8 +74,7 @@ namespace src
                 { endpoints.MapControllers(); });   
 
             // fill db with testdata
-            //DatabaseSeeder.Seed(context);
+            DatabaseSeeder.Seed(context);
         }
     }
-
 }

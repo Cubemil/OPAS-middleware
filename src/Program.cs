@@ -19,6 +19,29 @@ namespace src
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var env = hostingContext.HostingEnvironment;
+                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+                })
+                .ConfigureKestrel((context, options) =>
+                {
+                    var env = context.HostingEnvironment;
+                    if (env.IsDevelopment())
+                    {
+                        options.ListenAnyIP(5000); // Lauscht auf Port 5000 in der Entwicklungsumgebung
+                    }
+                    else if (env.IsProduction())
+                    {
+                        options.ListenAnyIP(80); // Lauscht auf Port 80 in der Produktionsumgebung
+                    }
+                    else
+                    {
+                        // Fallback-Konfiguration, falls weder Development noch Production
+                        options.ListenAnyIP(5000);
+                    }
+                });
     }
 }
