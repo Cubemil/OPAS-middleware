@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using src;
 
@@ -10,9 +11,11 @@ using src;
 namespace src.Migrations
 {
     [DbContext(typeof(OffenseDbContext))]
-    partial class OffenseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240813211449_addingNewFields01")]
+    partial class addingNewFields01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
@@ -22,9 +25,6 @@ namespace src.Migrations
                     b.Property<int>("RecordId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Anhoerungsdatum")
-                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Aufforderungsdatum")
                         .HasColumnType("TEXT");

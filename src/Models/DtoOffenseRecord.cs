@@ -46,22 +46,24 @@ namespace src.Models
         public void UpdateRecord(JsonOffenseRecord newRecord)
         {
             Fallnummer = newRecord.Fallnummer;
+            Meldedatum = newRecord.Meldedatum;
+            Versicherungsunternehmensnummer = newRecord.Versicherungsunternehmensnummer;
+            Krankenversicherung = newRecord.Krankenversicherung;
+            Versicherungsnummer = newRecord.Versicherungsnummer;
+            BeginnVersicherung = newRecord.BeginnVersicherung;
             Geschlecht = newRecord.Geschlecht;
             Titel = newRecord.Titel;
+            Geburtsdatum = newRecord.Geburtsdatum;
             Vorname = newRecord.Vorname;
             Nachname = newRecord.Nachname;
             Geburtsname = newRecord.Geburtsname;
-            Geburtsdatum = newRecord.Geburtsdatum;
             Str = newRecord.Str;
             Hausnummer = newRecord.Hausnummer;
             SplitHausnummer();
             Plz = newRecord.Plz;
             Wohnort = newRecord.Wohnort;
-            Geburtsort = newRecord.Geburtsort;
             Ortsteil = newRecord.Ortsteil;
-            Versicherungsunternehmensnummer = newRecord.Versicherungsunternehmensnummer;
-            Krankenversicherung = newRecord.Krankenversicherung;
-            Versicherungsnummer = newRecord.Versicherungsnummer;
+            Geburtsort = newRecord.Geburtsort;
             Aufforderungsdatum = newRecord.Aufforderungsdatum;
             BeginnRueckstand = newRecord.BeginnRueckstand;
             VerzugBis = newRecord.VerzugBis;
@@ -70,6 +72,7 @@ namespace src.Models
             Sollbeitrag = newRecord.Sollbeitrag;
             Folgemeldung = newRecord.Folgemeldung;
             Bemerkungen = newRecord.Bemerkungen;
+            Anhoerungsdatum = newRecord.Anhoerungsdatum;
 
             // increment RowVersion
             RowVersion++;

@@ -12,6 +12,27 @@ namespace src.Models
         [JsonPropertyName("fallnummer")]
         public new string Fallnummer { get; set; } = string.Empty;
 
+        [JsonRequired]
+        [JsonPropertyName("meldedatum")]
+        public new DateTime Meldedatum { get; set; }
+
+        // insurance data
+        [JsonRequired]
+        [JsonPropertyName("versicherungsunternehmensnummer")]
+        public new string Versicherungsunternehmensnummer { get; set; } = string.Empty;
+
+        [JsonRequired]
+        [JsonPropertyName("krankenversicherung")]
+        public new string Krankenversicherung { get; set; } = string.Empty;
+
+        [JsonRequired]
+        [JsonPropertyName("versicherungsnummer")]
+        public new string Versicherungsnummer { get; set; } = string.Empty;
+
+        [JsonRequired]
+        [JsonPropertyName("beginnVersicherung")]
+        public new DateTime BeginnVersicherung { get; set; }
+
         // personal data
         [JsonRequired]
         [JsonPropertyName("geschlecht")]
@@ -19,6 +40,10 @@ namespace src.Models
 
         [JsonPropertyName("titel")]
         public new string Titel { get; set; } = string.Empty;
+
+        [JsonRequired]
+        [JsonPropertyName("geburtsdatum")]
+        public new DateTime Geburtsdatum { get; set; }
 
         [JsonRequired]
         [JsonPropertyName("vorname")]
@@ -30,10 +55,6 @@ namespace src.Models
 
         [JsonPropertyName("geburtsname")]
         public new string Geburtsname { get; set; } = string.Empty;
-        
-        [JsonRequired]
-        [JsonPropertyName("geburtsdatum")]
-        public new DateTime Geburtsdatum { get; set; }
 
         [JsonRequired]
         [JsonPropertyName("str")]
@@ -51,24 +72,11 @@ namespace src.Models
         [JsonPropertyName("wohnort")]
         public new string Wohnort { get; set; } = string.Empty;
 
-        [JsonPropertyName("geburtsort")]
-        public new string Geburtsort { get; set; } = string.Empty;
-        
         [JsonPropertyName("ortsteil")]
         public new string Ortsteil { get; set; } = string.Empty;
 
-        // insurance data
-        [JsonRequired]
-        [JsonPropertyName("versicherungsunternehmensnummer")]
-        public new string Versicherungsunternehmensnummer { get; set; } = string.Empty;
-
-        [JsonRequired]
-        [JsonPropertyName("krankenversicherung")]
-        public new string Krankenversicherung { get; set; } = string.Empty;
-
-        [JsonRequired]
-        [JsonPropertyName("versicherungsnummer")]
-        public new string Versicherungsnummer { get; set; } = string.Empty;
+        [JsonPropertyName("geburtsort")]
+        public new string Geburtsort { get; set; } = string.Empty;
 
         // information about offense
         [JsonRequired]
@@ -103,6 +111,10 @@ namespace src.Models
         [JsonPropertyName("bemerkungen")]
         public new string Bemerkungen { get; set; } = string.Empty; 
 
+        // documents
+        [JsonPropertyName("anhoerungsdatum")]
+        public DateTime Anhoerungsdatum { get; set; }
+
         /**************** helper functions ****************/
 
         /// <summary>
@@ -115,41 +127,45 @@ namespace src.Models
             var errors = new List<string>();
 
             if (string.IsNullOrEmpty(record.Fallnummer))                        
-                errors.Add("Fallnummer is required.");
-            if (string.IsNullOrEmpty(record.Geschlecht))                        
-                errors.Add("Geschlecht is required.");
-            if (string.IsNullOrEmpty(record.Vorname))                           
-                errors.Add("Vorname is required.");
-            if (string.IsNullOrEmpty(record.Nachname))                          
-                errors.Add("Nachname is required.");
-            if (record.Geburtsdatum == DateTime.MinValue)                       
-                errors.Add("Geburtsdatum is required.");
-            if (string.IsNullOrEmpty(record.Str))                               
-                errors.Add("Str is required.");
-            if (string.IsNullOrEmpty(record.Hausnummer))                        
-                errors.Add("Hausnummer is required.");
-            if (string.IsNullOrEmpty(record.Plz))                               
-                errors.Add("Plz is required.");
-            if (string.IsNullOrEmpty(record.Wohnort))                           
-                errors.Add("Wohnort is required.");
-            if (string.IsNullOrEmpty(record.Geburtsort))                        
-                errors.Add("Geburtsort is required.");
+                errors.Add("Fallnummer wird benötigt.");
+            if (record.Meldedatum == DateTime.MinValue)                         
+                errors.Add("Meldedatum wird benötigt.");
             if (string.IsNullOrEmpty(record.Versicherungsunternehmensnummer))   
-                errors.Add("Versicherungsunternehmensnummer is required.");
+                errors.Add("Versicherungsunternehmensnummer wird benötigt.");
             if (string.IsNullOrEmpty(record.Krankenversicherung))               
-                errors.Add("Krankenversicherung is required.");
+                errors.Add("Krankenversicherung wird benötigt.");
             if (string.IsNullOrEmpty(record.Versicherungsnummer))               
-                errors.Add("Versicherungsnummer is required.");
+                errors.Add("Versicherungsnummer wird benötigt.");
+            if (record.BeginnVersicherung == DateTime.MinValue)                       
+                errors.Add("Beginn Versicherung wird benötigt.");
+            if (string.IsNullOrEmpty(record.Geschlecht))
+                errors.Add("Geschlecht wird benötigt.");
+            if (record.Geburtsdatum == DateTime.MinValue)                       
+                errors.Add("Geburtsdatum wird benötigt.");
+            if (string.IsNullOrEmpty(record.Vorname))                           
+                errors.Add("Vorname wird benötigt.");
+            if (string.IsNullOrEmpty(record.Nachname))                          
+                errors.Add("Nachname wird benötigt.");
+            if (string.IsNullOrEmpty(record.Str))                               
+                errors.Add("Straße wird benötigt.");
+            if (string.IsNullOrEmpty(record.Hausnummer))                        
+                errors.Add("Hausnummer wird benötigt.");
+            if (string.IsNullOrEmpty(record.Plz))                               
+                errors.Add("PLZ wird benötigt.");
+            if (string.IsNullOrEmpty(record.Wohnort))                           
+                errors.Add("Wohnort wird benötigt.");
             if (record.Aufforderungsdatum == DateTime.MinValue)                 
-                errors.Add("Aufforderungsdatum is required.");
+                errors.Add("Aufforderungsdatum wird benötigt.");
             if (record.BeginnRueckstand == DateTime.MinValue)                         
-                errors.Add("Beginn Rückstand is required.");
+                errors.Add("Beginn Rückstand wird benötigt.");
             if (record.Verzugsende == DateTime.MinValue)                        
-                errors.Add("Verzugsende is required.");
+                errors.Add("Verzugsende wird benötigt.");
             if (record.Beitragsrueckstand < 0)                                  
-                errors.Add("Beitragsrueckstand must be a non-negative integer.");
+                errors.Add("Beitragsrueckstand darf nicht negativ sein.");
             if (record.Sollbeitrag < 0)                                    
-                errors.Add("Sollbeitrag must be a non-negative integer.");
+                errors.Add("Sollbeitrag darf nicht negativ sein.");
+            if (record.Folgemeldung < 1)                                    
+                errors.Add("Es muss mindestens eine Folgemeldung existieren.");
 
             return errors;
         }
