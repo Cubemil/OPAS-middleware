@@ -31,12 +31,12 @@ namespace src.Controllers
         public IActionResult Post([FromBody] JsonOffenseRecord record)
         {
             if (record == null)
-                return BadRequest(new { message = "Invalid Data." });
+                return BadRequest(new { message = "Invalide Daten." });
 
             // server side validation
             var validationResults = JsonOffenseRecord.ValidateRecord(record);
             if (validationResults.Count != 0)
-                return BadRequest(new { message = "Validation failed.", errors = validationResults });
+                return BadRequest(new { message = "Validation fehlgeschlagen.", errors = validationResults });
 
             // map JsonOffenseRecord to DtoOffenseRecord
             var dtoRecord = _mapper.Map<DtoOffenseRecord>(record);
@@ -53,7 +53,7 @@ namespace src.Controllers
 
             // no empty record is allowed
             if (savedRecord == null)
-                return StatusCode(500, new { message = "Error saving offense." });
+                return StatusCode(500, new { message = "Fehler beim Speichern der Ordnungswidrigkeit." });
 
             return Ok(new { message = "Ordungswidrigkeit wurde erfolgreich eingetragen.", data = savedRecord });
         }
@@ -71,7 +71,7 @@ namespace src.Controllers
         {
             var records = _context.OffenseRecords.ToList();
             var ids = records.Select(r => r.RecordId);
-            return Ok(new { message = "Offenses successfully retrieved.", data = records, ids });
+            return Ok(new { message = "Ordnungswidrigkeiten erfolgreich übertragen.", data = records, ids });
         }
 
         /// <summary>
@@ -87,9 +87,9 @@ namespace src.Controllers
         {
             var record = _context.OffenseRecords.FirstOrDefault(r => r.RecordId == id);
             if (record == null)
-                return NotFound(new { message = "Offense not found." });
+                return NotFound(new { message = "Ordnungswidrigkeit nicht gefunden." });
 
-            return Ok(new { message = "Offense found.", data = record });
+            return Ok(new { message = "Ordnungswidrigkeit erfolgreich übertragen.", data = record });
         }
 
         /// <summary>
@@ -112,19 +112,19 @@ namespace src.Controllers
         public IActionResult Put(int id, [FromBody] JsonOffenseRecord updatedRecord)
         {
             if (updatedRecord == null)
-                return BadRequest(new { message = "Invalid data. Offense is empty." });
+                return BadRequest(new { message = "Invalide Daten. Ordnungswidrigkeit ist leer." });
 
             // server side validation
             var validationResults = JsonOffenseRecord.ValidateRecord(updatedRecord);
             if (validationResults.Count != 0)
-                return BadRequest(new { message = "Validation failed.", errors = validationResults });
+                return BadRequest(new { message = "Validation fehlgeschlagen.", errors = validationResults });
 
             var existingRecord = _context.OffenseRecords.FirstOrDefault(r => r.RecordId == id);
             if (existingRecord == null)
-                return NotFound(new { message = "Offense not found." });
+                return NotFound(new { message = "Ordnungswidrigkeit nicht gefunden." });
 
             if (existingRecord.RowVersion != updatedRecord.RowVersion)
-                return Conflict(new { message = "The offense has been modified by another user." });
+                return Conflict(new { message = "Speichern fehlgeschlagen. Die Ordnungswidrigkeit wurde von einem anderen Nutzer bereits gespeichert." });
 
             // update existing record with new values (+ increment RowVersion)
             existingRecord.UpdateRecord(updatedRecord);
@@ -136,10 +136,10 @@ namespace src.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                return Conflict(new { message = "Conflict: The record has been modified by another user." });
+                return Conflict(new { message = "Die Ordnungswidrigkeit wurde von einem anderen Nutzer überarbeitet." });
             }
 
-            return Ok(new { message = "Offense successfully updated.", data = existingRecord });
+            return Ok(new { message = "Ordnungswidrigkeit erfolgreich aktualisiert.", data = existingRecord });
         }
     }
 }

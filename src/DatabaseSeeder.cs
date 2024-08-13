@@ -15,7 +15,7 @@ namespace src
             {
                 new () {
                     Fallnummer = "A123",
-                    Geschlecht = "Herr",
+                    Geschlecht = "1",
                     Titel = "Dr.",
                     Vorname = "John",
                     Nachname = "Doe",
@@ -41,7 +41,7 @@ namespace src
                 },
                 new () {
                     Fallnummer = "B456",
-                    Geschlecht = "Frau",
+                    Geschlecht = "2",
                     Titel = "Prof.",
                     Vorname = "Jane",
                     Nachname = "Doe",
@@ -68,7 +68,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "C789",
-                    Geschlecht = "Herr",
+                    Geschlecht = "1",
                     Titel = "",
                     Vorname = "Mark",
                     Nachname = "Smith",
@@ -95,7 +95,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "D012",
-                    Geschlecht = "Frau",
+                    Geschlecht = "2",
                     Titel = "Dr.",
                     Vorname = "Emma",
                     Nachname = "Johnson",
@@ -122,7 +122,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "E345",
-                    Geschlecht = "Herr",
+                    Geschlecht = "1",
                     Titel = "",
                     Vorname = "Luke",
                     Nachname = "Brown",
@@ -149,7 +149,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "F678",
-                    Geschlecht = "Frau",
+                    Geschlecht = "2",
                     Titel = "Prof.",
                     Vorname = "Olivia",
                     Nachname = "Davis",
@@ -176,7 +176,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "G901",
-                    Geschlecht = "Herr",
+                    Geschlecht = "1",
                     Titel = "",
                     Vorname = "David",
                     Nachname = "Wilson",
@@ -203,7 +203,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "H234",
-                    Geschlecht = "Frau",
+                    Geschlecht = "2",
                     Titel = "Dr.",
                     Vorname = "Sophia",
                     Nachname = "Moore",
@@ -230,7 +230,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "I567",
-                    Geschlecht = "Herr",
+                    Geschlecht = "1",
                     Titel = "",
                     Vorname = "James",
                     Nachname = "Taylor",
@@ -257,7 +257,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "J890",
-                    Geschlecht = "Frau",
+                    Geschlecht = "2",
                     Titel = "Prof.",
                     Vorname = "Ava",
                     Nachname = "Anderson",
@@ -284,7 +284,7 @@ namespace src
                 new ()
                 {
                     Fallnummer = "K123",
-                    Geschlecht = "Herr",
+                    Geschlecht = "1",
                     Titel = "",
                     Vorname = "William",
                     Nachname = "Martinez",

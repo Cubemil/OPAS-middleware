@@ -19,7 +19,7 @@ namespace src.Controllers
         public IActionResult Seed()
         {
             DatabaseSeeder.Seed(_context);
-            return Ok("Database seeded successfully.");
+            return Ok("Datenbank erfolgreich gefüllt.");
         }
     }
 
